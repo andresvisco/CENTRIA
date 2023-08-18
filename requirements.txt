@@ -1,5 +1,4 @@
 streamlit
 azure.core
 azure.ai.formrecognizer
-PIL
-azure.storage
+azure.storage.blob
