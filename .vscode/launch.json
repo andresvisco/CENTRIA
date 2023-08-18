@@ -1,0 +1,15 @@
+{
+    "version": "0.1.0",
+    "configurations": [
+        {
+            "name": "debug streamlit",
+            "type": "python",
+            "request": "launch",
+            "program": "/home/andy/.local/lib/python3.8/site-packages/streamlit",
+            "args": [
+                "run",
+                "Inicio.py"
+            ]
+        }
+    ]
+    }
