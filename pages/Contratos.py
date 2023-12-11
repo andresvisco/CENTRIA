@@ -42,7 +42,7 @@ def consulta_AI(texto):
     response = openai.Completion.create(
         engine="text-davinci-003",
         prompt='Leer este contrato en linea: '+ str(texto)+' y sugerir no mas de 4 clausulas adicionales que no estén cubiertas? tu respuesta en formato de lista \n' ,
-        temperature=0.46,
+        temperature=0.60,
         max_tokens=1704,
         top_p=1,
         frequency_penalty=0,
@@ -52,7 +52,7 @@ def consulta_AI(texto):
 
 
 def proceso():
-    st.title("OPENAI Demo - CENTRIA - Contratos")
+    st.title("OPENAI Demo - CAMPOSOL - Contratos")
     
     uploaded_file = st.file_uploader("Selecciona un archivo PDF", type=["PDF","DOCX"])
     if uploaded_file is not None:
@@ -63,7 +63,7 @@ def proceso():
         data = uploaded_file.getvalue()
 
         parent_path = pathlib.Path(__file__).parent.parent.resolve()
-        save_path = os.path.join(parent_path, "../CENTRIA/data")
+        save_path = os.path.join(parent_path, "data")
         complete_name = os.path.join(save_path, uploaded_file.name)
         with open(complete_name, "wb") as f:
             f.write(bytes_data)
@@ -87,6 +87,7 @@ def proceso():
             st.info("Las clausulas sugeridas al contrato son:")
             st.success(respuesta.choices[0].text)
             st.success("Archivo analizado exitosamente")
+            st.write(respuesta)
             st.write("Nombre del archivo:", uploaded_file.name)
 
 def main():
@@ -96,7 +97,7 @@ col1,col2,col3 = st.columns(3)
 container = st.container()
 image = Image.open('logo.png')
 with container:
-    col2.image(image, use_column_width=False)
+    col2.image(image, use_column_width=True, width=200)
 
 btn_0 = st.sidebar.button("Guardar")
 btn_1 = st.sidebar.button("Analizar")
