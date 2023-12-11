@@ -1,0 +1,7 @@
+streamlit
+azure.core
+azure.ai.formrecognizer
+azure.storage.blob
+PyPDF2
+pdf2image
+openai
